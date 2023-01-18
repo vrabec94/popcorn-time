@@ -1,9 +1,11 @@
-function Header(){
-    return (
-        <div className="Header">
-        <h1>Current number of movies: XXX</h1>
-        </div>
-    );
+import "./Header.css"
+
+function Header(props) {
+  return (
+    <div className="Header">
+      <h1>Current number of movies: {props.numberOfMovies}</h1>
+    </div>
+  )
 }
 
 export default Header;

@@ -10,13 +10,12 @@ function Movie(props) {
           : <img src="https://via.placeholder.com/182x268" alt=""/>
         }
   
-  
         <p>Rating: {props.movieDetails.rating}</p>
   
         {/*  Conditional Rendering with "Logical && Operator"  */}
         {props.movieDetails.rating > 8 && <p className="badge">RECOMMENDED</p>}
   
-        <button onClick={() => { props.callbackToDelete(props.movieDetails.id) }}>Delete this movie</button>
+        <button onClick={() => { props.callbackToDelete(props.movieDetails.title) }}>Delete this movie</button>
       </div>
     )
   }
