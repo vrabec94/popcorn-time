@@ -1,7 +1,7 @@
 function Header(){
     return (
         <div className="Header">
-        <h1>This is the header</h1>
+        <h1>Current number of movies: XXX</h1>
         </div>
     );
 }

@@ -16,7 +16,7 @@ function Movie(props) {
         {/*  Conditional Rendering with "Logical && Operator"  */}
         {props.movieDetails.rating > 8 && <p className="badge">RECOMMENDED</p>}
   
-        <button onClick={() => { props.myCallback(props.movieDetails.id) }}>Delete this movie</button>
+        <button onClick={() => { props.callbackToDelete(props.movieDetails.id) }}>Delete this movie</button>
       </div>
     )
   }
