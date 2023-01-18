@@ -1,0 +1,79 @@
+
+
+State
+- store information that belongs to a component
+- can change over time
+- we want to reflect the changes in the UI (JSX)
+
+- every time we modify state, 'react' executes it's component again
+
+/*
+condition ? exprIfTrue : exprIfFalse
+*/
+
+const name = 'bob';
+
+// let likesPizza;
+
+// if (name === 'alice') {
+//   likesPizza = true;
+// } else {
+//   likesPizza = false;
+// }
+
+function getUserRole() {
+  let name = 'alice';
+
+  // if (name === 'alice') {
+  //   return 'admin';
+  // } else {
+  //   return 'standard';
+  // }
+
+  return name === 'alice' ? 'admin' : 'standard';
+}
+
+const result = getUserRole();
+console.log(result);
+
+
+const typeOfPizza = name === 'alice' ? 'margarita' : 'carbonara';
+
+console.log(typeOfPizza);
+
+Lab
+
+- add trophy when needed?
+
+- go to contacts.json to double check data
+
+- first import { arrayBuffer, json } from "stream/consumers"
+import data from json
+
+const firstFive = contacts.FromJSON.slice(0, 5);
+// creates a shallow copy
+
+Do iteration 3 first, then 2
+
+do not push into array, create updating function and update the state
+
+##iteration 4
+
+never modify state directly
+
+keep everything in one <App> tag
+
+setContacts((prevContactsArr) => {
+
+    prevContactsArr.sort(); // we would be modifying state directly instead:
+
+    //create shallow copy and return 
+    const copy = [...prevContacts];
+
+    return copy;
+})
+##iteration 5
+pass id of a contact 
+create a shallow copy here as well
+
+condition ? <p>truthy</p> : <p>falsy</p>

@@ -1,42 +1,47 @@
 import { useState } from "react";
 import moviesFromJson from "../data/movies.json"
 import "./Main.css"
+import Movie from "./Movie";
 
 function Main() {
-  
-const [moviesArr, setMoviesArr] = useState(moviesFromJson);
 
-const deleteMovie = (idOfTheMovieToDelete) => {
+
+  const [moviesArr, setMoviesArr] = useState(moviesFromJson);
+
+
+  const deleteMovie = (idOfTheMovieToDelete) => {
+
+    //calc the new list of movies
     const newListOfMovies = moviesArr.filter( (movie) => {
-        if(movie.id === idOfTheMovieToDelete){
-            return false;
-          } else {
-            return true;
-          }
+      return movie.id !== idOfTheMovieToDelete;
     });
 
     //update state
-    setMoviesArr(newListOfMovies)
-
+    setMoviesArr(newListOfMovies);
   }
-/* button onclick: here we pass an anonymous function, so that the function is not immediately executed */
+  
+
+  // Conditional Rendering with "Element Variables"
+  let titleMessage;
+  if(moviesArr.length > 0){
+    titleMessage = <h2>Current number of movies: {moviesArr.length}</h2>;
+  } else {
+    titleMessage = <h2>Sorry, no movies to display</h2>
+  }
+
+
   return (
     <div className="Main">
 
-    <h2>Current number of movies: {moviesArr.length}</h2> 
+      {titleMessage}
 
-      {moviesArr.map((movieDetails) => {
-        return (
-            <div key={movieDetails.id} className="card movie">
-            <p>{movieDetails.title}</p>
-            <p>Rating: {movieDetails.rating}</p>
-            <p>Year: {movieDetails.year}</p>
-            <button onClick={() => {deleteMovie(movieDetails.id)}}>Delete this movie</button>
-          </div>
-        );
+      {moviesArr.map( (movieObj) => {
+        return <Movie key={movieObj.id} movieDetails={movieObj} myCallback={deleteMovie} />
       })}
+
+      
     </div>
-  );
+  )
 }
 
 export default Main;
